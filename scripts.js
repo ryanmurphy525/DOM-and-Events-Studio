@@ -2,17 +2,21 @@
 // Remember to pay attention to page loading!
 window.addEventListener('load', function() {
     
-    const takeoffButton = document.getElementById("takeoff");
+const background = document.getElementById("shuttleBackground");
+
+const takeoffButton = document.getElementById("takeoff");
 takeoffButton.addEventListener("click", function() {
     const confirmation = confirm('Confirm that the shuttle is ready for takeoff.');
     if (confirmation) {
         // The flight status should change to "Shuttle in flight."
         document.getElementById("flightStatus").innerHTML = "Shuttle in flight.";
         // The background color of the shuttle flight screen (id = "shuttleBackground") should change from green to blue.
-        let background = document.getElementById("shuttleBackground");
         background.style.backgroundColor = 'blue';
         // The shuttle height should increase by 10,000 miles.
-        document.getElementById("spaceShuttleHeight").innerHTML = 10000;
+        let shuttleHeight = document.getElementById("spaceShuttleHeight");
+        let numberedShuttleHeight = Number(shuttleHeight.innerHTML);
+        numberedShuttleHeight += 10000;
+        shuttleHeight.innerHTML = numberedShuttleHeight;
     }
 });
 
@@ -20,7 +24,6 @@ const landButton = document.getElementById("landing");
 landButton.addEventListener("click", function() {
     alert("The shuttle is landing. Landing gear engaged.");
     document.getElementById("flightStatus").innerHTML = "The shuttle has landed.";
-    let background = document.getElementById("shuttleBackground");
     background.style.backgroundColor = 'green';
     document.getElementById("spaceShuttleHeight").innerHTML = 0;
 });
@@ -30,13 +33,12 @@ abortButton.addEventListener("click", function() {
     const confirmation = confirm('Confirm that you want to abort the mission.');
     if (confirmation) {
         document.getElementById("flightStatus").innerHTML = "Mission aborted.";
-        let background = document.getElementById("shuttleBackground");
         background.style.backgroundColor = 'green';
         document.getElementById("spaceShuttleHeight").innerHTML = 0;
     }
 });
 
-let rocketImage = document.getElementById("rocket");
+const rocketImage = document.getElementById("rocket");
 
 const upButton = document.getElementById("up");
 upButton.addEventListener("click", function() {
@@ -71,4 +73,3 @@ rightButton.addEventListener("click", function() {
 });
 
 });
-
